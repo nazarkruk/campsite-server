@@ -45,3 +45,14 @@ exports.verifyAdmin = function (req, res, next) {
     return next(err);
   }
 };
+
+// exports.validateOwner = (req, res, next) => {
+//   console.log(req.comment.author);
+//   if (req.user._id == req.params.commentId) {
+//     return next();
+//   } else {
+//     const err = new Error("You are not the owner");
+//     err.status = 403;
+//     return next(err);
+//   }
+// };
