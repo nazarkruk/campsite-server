@@ -27,7 +27,7 @@ uploadRouter
   .route("/")
   .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
   .get(
-    cors.cors,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {

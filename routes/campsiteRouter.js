@@ -164,7 +164,7 @@ campsiteRouter
     );
   })
   .delete(
-    ors.corsWithOptions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res, next) => {
@@ -216,7 +216,7 @@ campsiteRouter
       .catch((err) => next(err));
   })
   .post(
-    ors.corsWithOptions,
+    cors.corsWithOptions,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {
@@ -227,7 +227,7 @@ campsiteRouter
     }
   )
 
-  .put(ors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+  .put(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
     Campsite.findById(req.params.campsiteId)
       .then((campsite) => {
         if (campsite && campsite.comments.id(req.params.commentId)) {
@@ -269,7 +269,7 @@ campsiteRouter
       .catch((err) => next(err));
   })
 
-  .delete(ors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
+  .delete(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {
     Campsite.findById(req.params.campsiteId)
       .then((campsite) => {
         // console.log(campsite.comments.id(req.params.commentId).author._id);
