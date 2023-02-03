@@ -20,14 +20,13 @@ const imageFileFilter = (req, file, cb) => {
 };
 
 const upload = multer({ storage: storage, fileFilter: imageFileFilter });
-
 const uploadRouter = express.Router();
 
 uploadRouter
   .route("/")
   .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
   .get(
-    cors.corsWithOptions,
+    cors.cors,
     authenticate.verifyUser,
     authenticate.verifyAdmin,
     (req, res) => {
