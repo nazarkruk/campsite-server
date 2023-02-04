@@ -13,13 +13,13 @@ const storage = multer.diskStorage({
 });
 
 const imageFileFilter = (req, file, cb) => {
-  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+  if (!file.originalname.match(/.+\.(gif|png|jpe?g)$/i)) {
     return cb(new Error("You can upload only image files!"), false);
   }
   cb(null, true);
 };
 
-const upload = multer({ storage: storage, fileFilter: imageFileFilter });
+const upload = multer({ storage });
 const uploadRouter = express.Router();
 
 uploadRouter
